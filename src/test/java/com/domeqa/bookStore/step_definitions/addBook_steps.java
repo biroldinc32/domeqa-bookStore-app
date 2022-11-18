@@ -81,6 +81,4 @@ public class addBook_steps {
       Assert.assertEquals(expectedResult, demoqa.noRowsText.getText());
    }
 
-
-
 }

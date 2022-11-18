@@ -1,8 +1,7 @@
 
 Feature: https://demoqa.com Book Store Application
-  Adding a book to Collection
 
-  Background: User goes to the application page and login
+  Background User goes to the application page and login
     Given User goes to web page
     Then User login to the application successfully
 
