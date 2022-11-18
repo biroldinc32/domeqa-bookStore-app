@@ -1,3 +1,4 @@
+@wip
 Feature: https://demoqa.com Book Store Application
   Adding a book to Collection
 
@@ -5,13 +6,11 @@ Feature: https://demoqa.com Book Store Application
     Given User goes to web page
     Then User login to the application successfully
 
-@wip
   Scenario: Users should be able to add a book theirs Collection
     Then select a book from the bookstore
     Then click add your collection button
     Then click profile button
     And verify that selected book is added to the collection
-
 
   Scenario: Users should be able to delete a book from theirs Collection
     Then select a book from the bookstore

@@ -49,7 +49,9 @@ public class addBook_steps {
    }
    @Then("click profile button")
    public void click_profile_button() {
-      BrowserUtils.waitFor(2);
+      BrowserUtils.waitFor(3);
+      JavascriptExecutor js= (JavascriptExecutor) Driver.getDriver();
+      js.executeScript("window.scrollBy(0,500)","");
       demoqa.profileButton.click();
    }
    @Then("verify that selected book is added to the collection")
@@ -61,16 +63,21 @@ public class addBook_steps {
 
    @Then("click garbage icon and click OK button the book")
    public void click_garbage_icon_and_click_ok_button_the_book() {
-      BrowserUtils.waitFor(2);
+      BrowserUtils.waitFor(4);
       demoqa.deleteButton.click();
-      BrowserUtils.waitFor(1);
+      BrowserUtils.waitFor(3);
       demoqa.htmlAlertOKButton.click();
-      Alert alert = Driver.getDriver().switchTo().alert();
-      alert.accept();
+
    }
    @Then("verify that the book is deleted from the collection")
    public void verify_that_the_book_is_deleted_from_the_collection() {
       String expectedResult = "No rows found";
+      BrowserUtils.waitFor(3);
+      Alert alert = Driver.getDriver().switchTo().alert();
+      alert.accept();
+
+     JavascriptExecutor js= (JavascriptExecutor) Driver.getDriver();
+     js.executeScript("window.scrollBy(0,500)","");
       Assert.assertEquals(expectedResult, demoqa.noRowsText.getText());
    }
 
