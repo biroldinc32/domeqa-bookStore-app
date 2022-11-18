@@ -40,7 +40,7 @@ public class addingBookFeatureWithAPI_Step {
     @Given("User generate a token with using {string} and {string}")
     public void user_generate_a_token_with_using_and(String username , String password) {
 
-        token = APIUtilities.generateToken("JohnDoe","te85paTkLMpXP@XA");
+        token = APIUtilities.generateToken("JohnDoe","*John_980#");
 
 
     }
