@@ -66,12 +66,6 @@ public class addingBookFeatureWithAPI_Step {
 
     }
 
-    @Given("User get user id number")
-    public void user_get_user_id_number() {
-
-        String UserIdPathParam = userId;
-    }
-
     @When("User add book which {string} number book to the collection")
     public void user_add_book_which_number_book_to_the_collection(String isbn) {
 
