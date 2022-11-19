@@ -104,7 +104,7 @@ public class addingBookFeatureWithAPI_Step {
     @Then("User confirm that book is added to collection and delete all books from the collection")
     public void user_confirm_that_book_is_added_to_collection_and_delete_all_books_from_the_collection() {
 
-        String url = ("https://demoqa.com")+"/Account/v1/User/{UserId}";
+        String url = ("https://demoqa.com/BookStore/v1/Books/{UserId}";
 
         Response response=given().accept(ContentType.JSON)
                 .and().pathParam("UserId",userId)
