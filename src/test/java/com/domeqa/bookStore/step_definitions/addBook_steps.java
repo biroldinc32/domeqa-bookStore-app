@@ -8,9 +8,13 @@ import com.domeqa.bookStore.utilities.ConfigurationReader;
 import com.domeqa.bookStore.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class addBook_steps {
 
@@ -22,7 +26,7 @@ public class addBook_steps {
       Driver.getDriver().get(ConfigurationReader.getProperty("app.url"));
       demoqa.bookStoreApplication.click();
    }
-   @Then("User login to the application successfully")
+   @Given("User login to the application successfully")
    public void user_login_to_the_application_successfully() {
       demoqa.loginButton.click();
       BrowserUtils.sleep(2);
@@ -31,13 +35,13 @@ public class addBook_steps {
       demoqa.loginButton.click();
    }
 
-   @Then("select a book from the bookstore")
+   @When("select a book from the bookstore")
    public void select_a_book_from_the_bookstore() {
       BrowserUtils.waitFor(2);
       demoqa.book.click();
 
    }
-   @Then("click add your collection button")
+   @When("click add your collection button")
    public void click_add_your_collection_button() {
       JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
       jse.executeScript("window.scrollBy(0,350)");
@@ -47,7 +51,7 @@ public class addBook_steps {
       Alert alert = Driver.getDriver().switchTo().alert();
       alert.accept();
    }
-   @Then("click profile button")
+   @When ("click profile button")
    public void click_profile_button() {
       BrowserUtils.waitFor(3);
       JavascriptExecutor js= (JavascriptExecutor) Driver.getDriver();
