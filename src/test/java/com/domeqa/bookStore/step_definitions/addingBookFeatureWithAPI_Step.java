@@ -26,7 +26,7 @@ public class addingBookFeatureWithAPI_Step {
         requestMap.put("userName",userName);
         requestMap.put("password",password);
 
-       // System.out.println(requestMap);
+        System.out.println(requestMap);
 
         Response response= given().accept(ContentType.JSON)
                 .and()
@@ -35,7 +35,7 @@ public class addingBookFeatureWithAPI_Step {
 
         userId = response.path("userID");
 
-        //System.out.println("userId: "+userId);
+        System.out.println("userId: "+userId);
 
     }
 
@@ -98,21 +98,28 @@ public class addingBookFeatureWithAPI_Step {
     @Then("User confirm that book is added to collection and delete all books from the collection")
     public void user_confirm_that_book_is_added_to_collection_and_delete_all_books_from_the_collection() {
 
-        String url = ("https://demoqa.com/BookStore/v1/Books/{UserId}";
+        //String url = ("https://demoqa.com/BookStore/v1/Books/{UserId}";
+        //Response response = given().auth().basic(user, pass)
+              //  .accept(ContentType.JSON)
+               // .body(userId)
+               // .when()
+                //.post(url);
 
-        Response response=given().accept(ContentType.JSON)
-                .and().pathParam("UserId",userId)
-                .when().get("url");
+        //Response response2=given().accept(ContentType.JSON)
+                //.and().pathParam("UserId",userId)
+                //.when().get("url");
 
-        Assert.assertEquals(204,response.statusCode());
-        Assert.assertEquals(response.path("userId"), userId);
+        //Assert.assertEquals(204,response2.statusCode());
+       // Assert.assertEquals(response.path("userId"), userId);
+//ATTENTION: This Code Which is below this line must be use  otherwise test will not work for second attempt
+//(IT WILL REMOVE THE USER FOR THE SECOND AND THIRD OR OTHER ATTEMPTS TEST CAN BE RUN).
 
-         response = given().auth().basic(user, pass)
+        Response response = given().auth().basic(user, pass)
                 .accept(ContentType.JSON)
                 .when()
                 .delete("https://demoqa.com/Account/v1/User/" + userId);
 
-
+        Assert.assertEquals(response.statusCode(),204);
 
     }
 
