@@ -127,15 +127,19 @@ public class addingBookFeatureWithAPI_Step {
 //ATTENTION: This Code Which is below this line must be use  otherwise test will not work for second attempt
 //(IT WILL REMOVE THE USER FOR THE SECOND AND THIRD OR OTHER ATTEMPTS TEST CAN BE RUN).
 
-        Response response = given().auth().basic(user, pass)
-                .contentType(ContentType.JSON)
+       Response  response = given().auth().basic(user, pass)
                 .when()
                 .delete("https://demoqa.com/Account/v1/User/" + userId);
 
         Assert.assertEquals(response.statusCode(),204);
 
-    }
+        //Verify that user has already deleted
 
+        given().auth().basic(user, pass)
+                .when().delete("https://demoqa.com/Account/v1/User/" + userId)
+                .then().assertThat().statusCode(200);
+
+    }
 
 
 }
