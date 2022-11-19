@@ -10,7 +10,9 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Assert;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.*;
@@ -70,25 +72,36 @@ public class addingBookFeatureWithAPI_Step {
     public void user_add_book_which_number_book_to_the_collection(String isbn) {
 
         String url = "https://demoqa.com/BookStore/v1/Books";
-        String body=  "{\n" +
-                "  \"userId\": \"" + userId + "\",\n" +
-                "  \"collectionOfIsbns\": [\n" +
-                "    {\n" +
-                "      \"isbn\": \"" + isbn  + "\"\n" +
-                "    }\n" +
-                "  ]\n" +
-                "}";
-        Map jsonBody = new Gson().fromJson(body, Map.class);
+
+        Map<String ,String> collection = new HashMap<>();
+        collection.put("isbn","9781449325862");
+
+        List<Map<String ,String>> collectionList = new ArrayList<>();
+        collectionList.add(collection);
+
+        Map<String ,Object> requestMap= new HashMap<>();
+        requestMap.put("userId", userId);
+        requestMap.put("collectionOfIsbns", collectionList);
+
+        //String body=  "{\n" +
+               // "  \"userId\": \"" + userId + "\",\n" +
+                //"  \"collectionOfIsbns\": [\n" +
+                //"    {\n" +
+                //"      \"isbn\": \"" + isbn  + "\"\n" +
+                //"    }\n" +
+                //"  ]\n" +
+                //"}";
+        //Map jsonBody = new Gson().fromJson(body, Map.class);
 
         //System.out.println(jsonBody.toString());
 
         Response response = given().auth().basic(user, pass)
-                .contentType(ContentType.JSON)
-                .body(jsonBody)
-                .when()
-                .post(url);
+                            .accept(ContentType.JSON)
+                            .body(requestMap)
+                            .when()
+                            .post(url);
 
-        //response.then().log().all();
+        response.then().log().all();
         System.out.println(response.statusCode());
         System.out.println(response.getBody());
         System.out.println(response.body().asString());
