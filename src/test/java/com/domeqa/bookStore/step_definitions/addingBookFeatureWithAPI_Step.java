@@ -83,7 +83,7 @@ public class addingBookFeatureWithAPI_Step {
         //System.out.println(jsonBody.toString());
 
         Response response = given().auth().basic(user, pass)
-                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
                 .body(jsonBody)
                 .when()
                 .post(url);
@@ -115,7 +115,7 @@ public class addingBookFeatureWithAPI_Step {
 //(IT WILL REMOVE THE USER FOR THE SECOND AND THIRD OR OTHER ATTEMPTS TEST CAN BE RUN).
 
         Response response = given().auth().basic(user, pass)
-                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
                 .when()
                 .delete("https://demoqa.com/Account/v1/User/" + userId);
 
