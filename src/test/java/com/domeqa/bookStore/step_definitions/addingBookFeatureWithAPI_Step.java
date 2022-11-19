@@ -83,18 +83,6 @@ public class addingBookFeatureWithAPI_Step {
         requestMap.put("userId", userId);
         requestMap.put("collectionOfIsbns", collectionList);
 
-        //String body=  "{\n" +
-               // "  \"userId\": \"" + userId + "\",\n" +
-                //"  \"collectionOfIsbns\": [\n" +
-                //"    {\n" +
-                //"      \"isbn\": \"" + isbn  + "\"\n" +
-                //"    }\n" +
-                //"  ]\n" +
-                //"}";
-        //Map jsonBody = new Gson().fromJson(body, Map.class);
-
-        //System.out.println(jsonBody.toString());
-
         Response response = given().auth().basic(user, pass)
                             .accept(ContentType.JSON)
                             .body(requestMap)
