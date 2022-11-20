@@ -4,7 +4,7 @@ Feature: https://demoqa.com Book Store Application
   Background: User goes to the application page and login
     Given User goes to web page
     And User login to the application successfully
-
+@wip
   Scenario: Users should be able to add a book theirs Collection
     When select a book from the bookstore
     And click add your collection button
