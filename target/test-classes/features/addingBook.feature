@@ -10,7 +10,7 @@ Feature: https://demoqa.com Book Store Application
     And click add your collection button
     And click profile button
     Then verify that selected book is added to the collection
-
+@wip
   Scenario: Users should be able to delete a book from their Collection
     Then select a book from the bookstore
     Then click add your collection button
